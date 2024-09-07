@@ -1,0 +1,97 @@
+/* Container for the whole Home page, aligned vertically */
+.home-page-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%; /* Use 100% of the available container width */
+    margin: auto;
+    gap: 20px;
+  }
+  
+  /* General card style for all sections */
+  .home-page-contact-card,
+  .home-page-tnp-heads,
+  .home-page-placement-resources,
+  .home-page-location-card {
+    width: 100%; /* Occupy full width of the parent container */
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    min-height: 100px;
+  }
+  
+  /* Contact Info card */
+  .home-page-contact-card p {
+    margin: 5px 0;
+  }
+  
+  /* TNP Heads Section */
+  .home-page-tnp-heads {
+    width: 100%; /* Full width for heads section */
+  }
+  
+  .home-page-tnp-heads-grid {
+    display: flex;
+    flex-direction: column; /* Stack TNP heads cards vertically */
+    gap: 10px;
+  }
+  
+  .home-page-tnp-head-card {
+    text-align: center;
+    padding: 10px;
+    background-color: #f7f7f7;
+    border-radius: 8px;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .home-page-head-image {
+    width: 50px; /* Small image size */
+    height: 50px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-bottom: 5px;
+  }
+  
+  /* Placement Resources Section */
+  .home-page-placement-resources {
+    width: 100%;
+  }
+  
+  .home-page-resources-grid {
+    display: flex;
+    flex-direction: column; /* Stack resource cards vertically */
+    gap: 10px;
+  }
+  
+  .home-page-resource-card {
+    text-align: center;
+    padding: 10px;
+    background-color: #f7f7f7;
+    border-radius: 8px;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Location Section */
+  .home-page-location-card {
+    width: 100%; /* Full width for location section */
+  }
+  
+  .home-page-location-card iframe {
+    border: none;
+    border-radius: 8px;
+  }
+  
+  /* Small adjustments for responsiveness */
+  @media (min-width: 768px) {
+    .home-page-container {
+      width: 100%; /* Full width for the container */
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .home-page-container {
+      width: 100%; /* Full width on smaller screens as well */
+    }
+  }
+  

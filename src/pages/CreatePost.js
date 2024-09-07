@@ -1,39 +1,65 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import api from '../services/api';
 import MarkdownEditor from '../components/MarkDownEditor'; // Import your Markdown Editor
 import '../styles/CreatePost.css'; // Import CSS for CreatePost styling
 
-function CreatePost() {
+function CreatePost({ initialValues, onSuccess }) {
+    const navigate = useNavigate();
     const loginUser = localStorage.getItem('user');
     const userObject = JSON.parse(loginUser);
 
-    // Initialize useForm with default values
-    const { register, handleSubmit, control } = useForm({
+    
+
+    // Initialize useForm with default values from props
+    const { register, handleSubmit, control, setValue } = useForm({
         defaultValues: {
-            title: '',
-            content: '',
-            status: 'Draft',  // Set 'Draft' as default status
-            google_form_link: '',
-            author_id: userObject?.id, // Use optional chaining in case the user is null
+            title: initialValues?.title || '',
+            content: initialValues?.content || '',
+            status: initialValues?.status || 'Draft',
+            google_form_link: initialValues?.google_form_link || '',
+            author_id: userObject?.id || '',
         },
     });
 
-    const navigate = useNavigate();
+    useEffect(() => {
+        if (initialValues) {
+            // Set values if initialValues are provided
+            setValue('title', initialValues.title);
+            setValue('content', initialValues.content);
+            setValue('status', initialValues.status);
+            setValue('google_form_link', initialValues.google_form_link);
+        }
+    }, [initialValues, setValue]);
 
     const submit = async (data) => {
         data.author_id = userObject?.id; // Ensure author_id is set from userObject
 
         try {
-            const response = await api.post('/posts', data);
-            if (response.status === 201) {
-                navigate(`/posts/${response.data.id}`);
+            let response;
+            if (initialValues) {
+                // If initialValues exist, it's an update
+                response = await api.put(`/posts/${initialValues.id}`, data);
+            } else {
+                // Otherwise, it's a create
+                response = await api.post('/posts', data);
+            }
+
+            if (response.status === 201 || response.status === 200) {
+                // Redirect to the post detail page or call onSuccess
+                if (!initialValues) {
+                    navigate(`/posts/${response.data.id}`);
+                } else {
+                    onSuccess(); // Call onSuccess callback for updates
+                }
             }
         } catch (error) {
-            console.error('Error creating post:', error);
+            console.error('Error saving post:', error);
         }
     };
+
+    if(userObject.role!=="Admin") return null;
 
     return (
         <form onSubmit={handleSubmit(submit)} className="create-post-form">
@@ -82,7 +108,9 @@ function CreatePost() {
             </div>
 
             {/* Submit Button */}
-            <button type="submit">Create Post</button>
+            <button type="submit">
+                {initialValues ? 'Update Post' : 'Create Post'}
+            </button>
         </form>
     );
 }

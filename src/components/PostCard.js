@@ -10,7 +10,7 @@ const PostCard = ({ post, onPostClick }) => {
 
     const handleReadMoreClick = (e) => {
         e.stopPropagation(); // Prevents triggering handleCardClick
-        window.open(`/posts/${post.id}`, '_blank');
+        window.open(`/post/${post.id}`, '_blank');
     };
 
     return (

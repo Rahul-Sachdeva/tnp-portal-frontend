@@ -5,6 +5,7 @@ import { AuthProvider } from '../hooks/AuthContext';
 import Home from '../pages/Home/Home';
 import Post from '../pages/Post';
 import CreatePost from '../pages/CreatePost';
+import FirstComponent from '../pages/Home/FirstComponent.js';
 
 const AppRoutes = () => {
   return (
@@ -13,6 +14,7 @@ const AppRoutes = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/home" element={<Home />} />
+        <Route path="/about" element={<FirstComponent/>} />
         <Route path="/post/:id" element={<Post />} />
         <Route path="/create-post" element={<CreatePost />} />
         <Route path="/register" element={<Register />} />

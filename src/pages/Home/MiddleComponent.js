@@ -55,6 +55,9 @@ const MiddleComponent = ({ onPostClick, setFirstPost }) => {
 
     const handleSearch = (searchTerm) => {
         const filtered = posts.filter(post => post.title.toLowerCase().includes(searchTerm.toLowerCase()));
+        if(filtered.length<10 && hasMore){
+            setPage((prevPage) => prevPage + 1);
+        }
         setFilteredPosts(filtered);
     };
 

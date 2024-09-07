@@ -10,8 +10,22 @@ const Navbar = () => {
   const navigate = useNavigate();
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const loginUser = localStorage.getItem('user');
   const { logout } = useContext(AuthContext);
+
+  const getUserFromLocalStorage = () => {
+    const user = localStorage.getItem('user'); // assuming the user is stored under the 'user' key
+    return user ? JSON.parse(user) : null;     // return parsed user object if exists
+  };
+  
+  // Function to get the user role
+  const getUserRole = () => {
+    const user = getUserFromLocalStorage();
+    return user ? user.role : null; // return the role if the user exists
+  };
+  
+  // Usage example (check user role):
+  const role = getUserRole();
+  const loginUser = localStorage.getItem('user');
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -32,19 +46,15 @@ const Navbar = () => {
   return (
     <nav className="navbar">
       <div className="navbar-logo">
-        <Link to="/">MyWebsite</Link>
+        <Link to="/">Training and Placement Cell</Link>
       </div>
       
       {!isMobile && (
         <ul className="navbar-links">
           <li><Link to="/home">Home</Link></li>
-          <li><Link to="/posts">Posts</Link></li>
-          <li><Link to="/create-post">Create Post</Link></li>
+          {role==="Admin" && <li><Link to="/create-post">Create Post</Link></li>}
           <li><Link to="/about">About Us</Link></li>
-          <li><Link to="/contact">Contact</Link></li>
           <li>
-
-          
             {loginUser? <button onClick={()=>logout(loginUser)} className="logout-btn">Logout</button>
                 : <Link to="/login">login</Link>
             }
@@ -63,10 +73,8 @@ const Navbar = () => {
       {isMobile && isMenuOpen && (
         <ul className={`navbar-links ${isMenuOpen ? 'show' : ''}`}>
           <li><Link to="/home" onClick={toggleMenu}>Home</Link></li>
-          <li><Link to="/posts" onClick={toggleMenu}>Posts</Link></li>
-          <li><Link to="/create-post" onClick={toggleMenu}>Create Post</Link></li>
+          {role==="Admin" && <li><Link to="/create-post" onClick={toggleMenu}>Create Post</Link></li>}
           <li><Link to="/about" onClick={toggleMenu}>About Us</Link></li>
-          <li><Link to="/contact" onClick={toggleMenu}>Contact</Link></li>
           <li>
             {loginUser? <button onClick={() => {toggleMenu(); }} className="logout-btn"><Logout/></button>
                 : <Link to="/login">login</Link>
