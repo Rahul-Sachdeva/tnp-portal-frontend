@@ -1,0 +1,68 @@
+/* Container for the post */
+.post-container {
+    max-width: 800px; /* Limit the width of the post */
+    margin: 20px auto; /* Center the post horizontally */
+    padding: 20px;
+    background-color: #fff; /* Background color for the post */
+    border: 1px solid #ddd; /* Border color */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Light shadow for depth */
+}
+
+/* Title of the post */
+.post-title {
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+/* Content of the post */
+.post-content {
+    margin-bottom: 20px;
+}
+
+/* Input and textarea styles for editing */
+.post-input,
+.post-textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.post-textarea {
+    height: 300px; /* Fixed height for the textarea */
+    resize: vertical; /* Allow vertical resizing */
+}
+
+/* Button styles */
+.post-button {
+    background-color: #007bff; /* Primary button color */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-right: 10px; /* Space between buttons */
+    transition: background-color 0.3s ease;
+}
+
+.post-button:hover {
+    background-color: #0056b3; /* Darker shade on hover */
+}
+
+.delete-button {
+    background-color: #dc3545; /* Danger button color */
+}
+
+.delete-button:hover {
+    background-color: #c82333; /* Darker shade on hover */
+}
+
+/* Loading spinner style */
+.loading {
+    text-align: center;
+    font-size: 1.5em;
+    margin-top: 20px;
+}
