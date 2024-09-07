@@ -1,0 +1,66 @@
+.post-card {
+    padding: 15px;
+    border: 1px solid black;
+    border-radius: 15px;
+    background-color: #fff;
+    cursor: pointer;
+    height: 300px; /* Fixed height for the card */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: hidden; /* Ensures the content doesn't overflow the card */
+}
+
+/* For PostCard and FullPost content */
+.post-content-preview, .full-post-content {
+    line-height: 1.6; /* Increase line height for better readability */
+    letter-spacing: 0.5px; /* Optional: Slightly increase letter-spacing for clarity */
+    margin-bottom: 10px; /* Add spacing at the bottom */
+}
+
+h2, h1 {
+    margin-bottom: 15px;
+    line-height: 1.3; /* Ensure headers have balanced line-height */
+}
+
+.full-post-content {
+    font-size: 18px; /* Slightly larger font for full post view */
+}
+
+.post-card h2 {
+    margin: 0;
+    font-size: 1.2em;
+}
+
+.post-card p {
+    margin: 0;
+    flex-grow: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    white-space: normal; /* Allows content to wrap to the next line */
+}
+
+.post-content-preview {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    flex-grow: 1; /* Allow content to grow but limit height */
+    margin-bottom: 10px; /* Space between content and button */
+    max-height: 180px; /* Set a maximum height for the preview content */
+}
+
+.read-more-btn {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    text-align: center;
+    width: 100%;
+    align-self: flex-end; /* Align button at the bottom */
+}
+
+.read-more-btn:hover {
+    background-color: #0056b3;
+}

@@ -1,0 +1,83 @@
+/* Container for full post */
+.full-post-container {
+    display: flex;
+    flex-direction: column;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    height: 100vh;
+}
+
+/* Post header */
+.post-header {
+    position: sticky;
+    top: 0;
+    background-color: #fff;
+    padding: 20px 0;
+    z-index: 1000;
+    border-bottom: 2px solid #eee;
+    text-align: center;
+}
+
+/* Title styling */
+.post-header h1 {
+    margin: 0;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #333;
+}
+
+/* Meta information below the title */
+.post-meta {
+    margin-top: 10px;
+    font-size: 0.9rem;
+    color: #888;
+}
+
+/* Status and Google form link */
+.post-status {
+    margin-right: 15px;
+    font-weight: bold;
+}
+
+.post-link {
+    color: #3498db;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.post-link:hover {
+    text-decoration: underline;
+}
+
+/* Scrollable content */
+.post-content {
+    margin-top: 20px;
+    padding: 20px;
+    overflow-y: auto;
+    flex-grow: 1;
+    background-color: #fff;
+    border-radius: 8px;
+    max-height: calc(100vh - 150px); /* Account for sticky header */
+}
+
+.post-content p {
+    margin-bottom: 1.5rem;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #555;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .post-header h1 {
+        font-size: 2rem;
+    }
+    
+    .post-content {
+        max-height: calc(100vh - 120px);
+    }
+}

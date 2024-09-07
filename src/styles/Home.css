@@ -1,0 +1,52 @@
+.home-container {
+  display: flex;
+  flex-direction: row;
+  height: 90vh;
+  overflow: hidden;
+}
+
+.first-component {
+  flex: 0 0 20%;
+  padding: 10px;
+  background-color: #f5f5f5;
+}
+
+.middle-component {
+  flex: 0 0 44%;
+  padding: 10px;
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+}
+
+.third-component {
+  flex: 0 0 35%;
+  padding: 10px;
+  background-color: #eaeaea;
+  position: sticky;
+  top: 0;
+  overflow-y: auto;
+}
+
+.posts-list {
+  flex-grow: 1;
+  overflow-y: auto;
+}
+
+.post-card {
+  padding: 10px;
+  margin-bottom: 10px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.post-card:hover {
+  background-color: #f0f0f0;
+}
+
+.post-content {
+  padding: 20px;
+  background-color: #fff;
+}
